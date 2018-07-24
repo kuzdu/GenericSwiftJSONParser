@@ -104,3 +104,7 @@ Carthage/Build
 # `pod install` in .travis.yml
 #
 # Pods/
+Pods
+contents.xcworkspacedata
+IDEWorkspaceChecks.plist
+Podfile.lock
