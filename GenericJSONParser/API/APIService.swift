@@ -26,7 +26,8 @@ class APIService {
             parameters["page"] = page
         }
         
-        HTTP.get(url: baseUrl + users, parameters: parameters, headers: [:], completion: { (userHolder: UserHolder) in
+        let http = HTTP()
+        http.get(url: baseUrl + users, parameters: parameters, headers: [:], completion: { (userHolder: UserHolder) in
             completion(userHolder)
         }) { (error) in
             failure(error)

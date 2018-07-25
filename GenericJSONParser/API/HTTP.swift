@@ -12,16 +12,9 @@ import Alamofire
 
 class HTTP {
 
-    static func get<T: Codable> (url: String, parameters: [String: Any], headers: [String: String]?, completion: @escaping (_ response: T) -> (), failure: @escaping (_ error: Error?) -> ()) {
-        /*Alamofire.request(url, method: .get, parameters: nil, encoding: .default, headers: nil).responseDecodableObject { (response: DataResponse<T>) in
-            if let parsedJson = response.result.value {
-                completion(parsedJson)
-            } else {
-                failure(response.error)
-            }
-        }*/
-        
-        Alamofire.request(url).responseDecodableObject { (response: DataResponse<T>) in
+    func get<T: Codable> (url: String, parameters: [String: Any]?, headers: [String: String]?, completion: @escaping (_ response: T) -> (), failure: @escaping (_ error: Error?) -> ()) {
+       
+        Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseDecodableObject { (response: DataResponse<T>) in
             if let parsedJson = response.result.value {
                 completion(parsedJson)
             } else {
